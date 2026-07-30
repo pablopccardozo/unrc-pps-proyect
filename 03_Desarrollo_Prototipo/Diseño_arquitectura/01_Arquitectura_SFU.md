@@ -41,7 +41,7 @@ El sistema implementa una arquitectura **cliente-servidor con SFU (Selective For
                            │
                     ┌──────┴──────┐
                     │  AP WiFi    │  ← WMM/EDCA convierte DSCP EF
-                    │  5 GHz      │     en prioridad AC_VO
+                    │ 2.4/5 GHz   │     en prioridad AC_VO
                     └──────┬──────┘
                            │
                ┌───────────┼───────────┐

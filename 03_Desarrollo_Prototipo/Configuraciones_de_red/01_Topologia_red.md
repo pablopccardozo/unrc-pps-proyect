@@ -24,7 +24,7 @@
                     └─────┬──────┘
                           │
                     ┌─────┴──────┐
-                    │ Access Point│  (WiFi 5 GHz, WMM habilitado)
+                    │ Access Point│  (WiFi 2.4/5 GHz, WMM habilitado)
                     │   WiFi     │
                     └─────┬──────┘
                           │  ≪ onda radio ≫
@@ -40,7 +40,7 @@
 ## Descripción
 
 - **Servidor**: Ubuntu Server (22.04+) conectado por Ethernet al switch.
-- **Access Point**: WiFi 5 GHz con WMM habilitado, canal sin congestión externa.
+- **Access Point**: WiFi en banda 2.4 GHz o 5 GHz (según el escenario de prueba) con WMM habilitado, canal sin congestión externa.
 - **Clientes**: Dispositivos con navegador (Chromebooks, smartphones, tablets, notebooks) conectados por WiFi.
 - **Rango de puertos RTP**: 2000–2050 UDP (50 puertos, compartidos RTP/RTCP via `enableRtcpMux`).
 - **Señalización**: Puerto 3000 TCP (HTTPS + WebSocket Socket.IO).
