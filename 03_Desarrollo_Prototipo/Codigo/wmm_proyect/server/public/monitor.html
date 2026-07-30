@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WMM Audio Server - Monitor</title>
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#3b82f6" />
+    <link rel="apple-touch-icon" href="/assets/icons/icon-192.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/monitor.css">
+    <script src="/js/env-config.js"></script>
+    <script src="/js/common/logger.js"></script>
+</head>
+
+<body>
+    <!-- Contenedor de Autenticación -->
+    <div class="container" id="authContainer" style="display: none; max-width: 480px; min-height: 100vh; align-items: center; justify-content: center;">
+        <div class="card">
+            <div class="card-header">
+                <h1>Acceso Restringido</h1>
+                <p>Ingresá la clave de administración para acceder al Panel de Monitoreo</p>
+            </div>
+            <form id="authForm" class="login-form">
+                <div class="form-group">
+                    <label for="adminKey">🔑 Clave de acceso</label>
+                    <input type="password" id="adminKey" class="form-control" placeholder="Ingresá la clave WMM" required autocomplete="off">
+                </div>
+                <div class="error-message" id="authErrorMessage" style="display: none; background: rgba(239, 68, 68, 0.1); color: var(--danger); padding: 0.75rem 1rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; text-align: center; border: 1px solid rgba(239, 68, 68, 0.2); font-weight: 500;">
+                    ❌ Clave incorrecta
+                </div>
+                <div style="display: flex; gap: 1rem;">
+                    <button type="submit" class="btn btn-primary" style="flex: 1;">Acceder</button>
+                    <a href="/" class="btn" style="flex: 1; text-align: center; text-decoration: none;">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Contenedor del Dashboard -->
+    <div class="container" id="dashboardContainer" style="display: none; flex-direction: column; justify-content: flex-start; align-items: stretch; min-height: 100vh; padding-top: 2rem;">
+        <div class="card">
+            <div class="card-header">
+                <h1>Panel de Monitoreo</h1>
+                <p id="status" class="status-badge info">Conectando al servidor...</p>
+            </div>
+
+            <div class="server-info" id="serverInfo">
+                <div class="server-info-item">
+                    <span class="server-info-label">IP del servidor</span>
+                    <span class="server-info-value" id="serverIp">Detectando...</span>
+                </div>
+                <div class="server-info-item">
+                    <span class="server-info-label">Acceso directo</span>
+                    <span class="server-info-value" id="serverUrl">---</span>
+                </div>
+                <div class="server-info-item">
+                    <span class="server-info-label">Uptime</span>
+                    <span class="server-info-value" id="serverUptime">---</span>
+                </div>
+            </div>
+
+            <div class="monitor-grid">
+                <div class="metric-card">
+                    <h4>Latencia Promedio</h4>
+                    <div class="metric-value" id="avgLatency">0</div>
+                    <div class="metric-unit">milisegundos</div>
+                </div>
+                <div class="metric-card">
+                    <h4>Peor Latencia</h4>
+                    <div class="metric-value" id="maxLatency">0</div>
+                    <div class="metric-unit">milisegundos</div>
+                </div>
+                <div class="metric-card">
+                    <h4>Oradores Activos</h4>
+                    <div class="metric-value" id="speakersCount">0</div>
+                    <div class="metric-unit">conectados</div>
+                </div>
+                <div class="metric-card">
+                    <h4>Oyentes Conectados</h4>
+                    <div class="metric-value" id="listenersCount">0</div>
+                    <div class="metric-unit">escuchando</div>
+                </div>
+                <div class="metric-card">
+                    <h4>Bitrate Total</h4>
+                    <div class="metric-value" id="totalBitrate">0</div>
+                    <div class="metric-unit">kbps</div>
+                </div>
+            </div>
+
+            <h3 style="margin: 1.5rem 0 1rem;">Oradores y sus Oyentes</h3>
+            <div id="speakersContainer"></div>
+        </div>
+    </div>
+
+    <button class="refresh-btn" id="refreshBtn">⟳</button>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/common/socket-client.js"></script>
+    <script src="/js/monitor-app.js"></script>
+    <script src="/js/pwa-init.js"></script>
+</body>
+
+</html>

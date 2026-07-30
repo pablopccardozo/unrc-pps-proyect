@@ -1,0 +1,22 @@
+# wmm-audio.service — Servicio systemd para WMM Audio Server
+# Instalar con: sudo cp wmm-audio.service /etc/systemd/system/
+#               sudo systemctl daemon-reload
+#               sudo systemctl enable wmm-audio.service
+
+[Unit]
+Description=WMM Audio Server
+Documentation=https://auditorio.local/
+After=network-online.target docker.service avahi-daemon.service
+Wants=network-online.target docker.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/home/gidat/wmm_proyect
+ExecStart=/bin/bash /home/gidat/wmm_proyect/start-services.sh
+ExecStop=/usr/bin/docker compose -f /home/gidat/wmm_proyect/docker-compose.yml down
+TimeoutStartSec=120
+
+[Install]
+WantedBy=multi-user.target

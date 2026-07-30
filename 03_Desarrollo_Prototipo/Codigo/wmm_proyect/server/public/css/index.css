@@ -1,0 +1,55 @@
+.menu-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.divider {
+  text-align: center;
+  margin: 1.5rem 0;
+  position: relative;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: calc(50% - 30px);
+  height: 1px;
+  background: var(--gray-200);
+}
+
+.divider::before {
+  left: 0;
+}
+
+.divider::after {
+  right: 0;
+}
+
+.divider span {
+  background: white;
+  padding: 0 1rem;
+  color: var(--gray-500);
+  font-size: 0.875rem;
+}
+
+.info-box {
+  background: var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-top: 2rem;
+  text-align: center;
+  border: 1px solid var(--gray-300);
+}
+
+.info-box p {
+  font-size: 0.875rem;
+  color: var(--gray-600);
+}
+
+.info-box strong {
+  color: var(--primary);
+}

@@ -1,0 +1,30 @@
+# Editor config
+.obsidian/
+
+# Dependencias
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# Archivos de entorno
+.env
+
+# Certificados SSL (contienen claves privadas)
+*.pem
+*.key
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# PDFs de papers (se referencian, no se versionan)
+# Si querés incluirlos, comentá la línea de abajo
+# 02_Literatura_Revisada/PDFs_papers/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo

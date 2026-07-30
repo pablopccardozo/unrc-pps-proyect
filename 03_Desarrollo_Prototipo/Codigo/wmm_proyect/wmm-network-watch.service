@@ -1,0 +1,19 @@
+# wmm-network-watch.service — Watchdog de IP para WMM Audio Server
+# Instalar con: sudo cp wmm-network-watch.service /etc/systemd/system/
+#               sudo systemctl daemon-reload
+#               sudo systemctl enable wmm-network-watch.service
+
+[Unit]
+Description=WMM Audio Server - Network IP Watchdog
+After=wmm-audio.service
+Requires=wmm-audio.service
+
+[Service]
+Type=simple
+WorkingDirectory=/home/gidat/wmm_proyect
+ExecStart=/bin/bash /home/gidat/wmm_proyect/network-watch.sh
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

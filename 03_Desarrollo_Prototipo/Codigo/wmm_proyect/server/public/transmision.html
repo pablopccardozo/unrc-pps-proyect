@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>WMM Audio Server - Transmitir</title>
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#3b82f6" />
+  <link rel="apple-touch-icon" href="/assets/icons/icon-192.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/transmision.css" />
+  <script src="/js/env-config.js"></script>
+  <script src="/js/common/logger.js"></script>
+</head>
+
+<body>
+  <button class="logout-btn" id="logoutBtn">Salir y cerrar sesión</button>
+
+  <div class="container">
+    <div class="card" style="max-width: 600px">
+      <div class="card-header">
+        <h1>Transmisión en Vivo</h1>
+        <p id="status" class="status-badge info">Verificando sesión...</p>
+      </div>
+      <!-- Selector de micrófono -->
+      <div id="micSelectorContainer" style="display: none; margin-bottom: 1rem">
+        <label for="micSelect" style="
+              display: block;
+              margin-bottom: 0.5rem;
+              font-weight: 500;
+              font-size: 0.875rem;
+            ">
+          Seleccionar micrófono:
+        </label>
+        <select id="micSelect" class="form-control" style="
+              width: 100%;
+              padding: 0.5rem;
+              border-radius: var(--radius-md);
+              border: 1px solid var(--gray-300);
+            ">
+          <option value="">Cargando dispositivos...</option>
+        </select>
+      </div>
+
+      <div class="mic-visualizer" id="micVisualizer" style="display: none">
+        <div class="waveform" id="waveform"></div>
+      </div>
+
+      <div class="mic-status" id="micStatus" style="display: none">
+        Esperando acceso al micrófono...
+      </div>
+
+      <div class="stats-grid hidden" id="statsGrid">
+        <div class="stat-card">
+          <div class="stat-value" id="latencyValue">0 <span id="latencyDot"
+              style="display:inline-block; width:12px; height:12px; border-radius:50%; background-color:#4CAF50; margin-left:5px;"></span>
+          </div>
+          <div class="stat-label">Latencia (ms)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="bitrateValue">0</div>
+          <div class="stat-label">Bitrate (kbps)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="listenersCount">0</div>
+          <div class="stat-label">Oyentes</div>
+        </div>
+      </div>
+
+      <div class="control-panel">
+        <button class="btn btn-primary" id="startBtn">
+          Iniciar Transmisión
+        </button>
+        <button class="btn btn-danger hidden" id="stopBtn">Detener</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/speaker/speaker-init.js"></script>
+  <script src="/js/libs/mediasoup-client.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/common/socket-client.js"></script>
+  <script src="/js/common/ui-helpers.js"></script>
+  <script src="/js/speaker/audio-service.js"></script>
+  <script src="/js/speaker/transport-service.js"></script>
+  <script src="/js/speaker/latency-monitor.js"></script>
+  <script src="/js/speaker/speaker-app.js"></script>
+  <script src="/js/pwa-init.js"></script>
+</body>
+
+</html>

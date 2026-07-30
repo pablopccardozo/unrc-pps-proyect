@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>WMM Audio Server - Inicio</title>
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#3b82f6" />
+  <link rel="apple-touch-icon" href="/assets/icons/icon-192.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/index.css" />
+  <script src="/js/env-config.js"></script>
+  <script src="/js/common/logger.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card" style="max-width: 480px">
+      <div class="card-header">
+        <h1>WMM Audio Server</h1>
+      </div>
+
+      <div class="menu-options">
+        <button class="btn btn-primary" id="btnTransmitir">
+          Iniciar Transmisión
+        </button>
+        <button class="btn btn-outline" id="btnEscuchar">
+          Escuchar Auditorio
+        </button>
+        <button class="btn btn-outline" id="btnMonitor">
+          Panel de Monitoreo
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/index.js"></script>
+  <script src="/js/pwa-init.js"></script>
+</body>
+
+</html>

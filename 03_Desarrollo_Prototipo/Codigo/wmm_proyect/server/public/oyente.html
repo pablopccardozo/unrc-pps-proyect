@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>WMM Audio Server - Escuchar</title>
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#3b82f6" />
+  <link rel="apple-touch-icon" href="/assets/icons/icon-192.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/oyente.css" />
+  <script src="/js/env-config.js"></script>
+  <script src="/js/common/logger.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card" style="max-width: 600px">
+      <div class="card-header">
+        <h1>Escuchar Auditorio</h1>
+        <div id="noTransmissionWarning" class="warning-banner" style="display: none">
+          ⚠️ No hay transmisiones activas en este momento
+        </div>
+        <p id="status" class="status-badge info">Conectando...</p>
+      </div>
+
+      <div class="speakers-container">
+        <div class="speakers-header">
+          <h3>Oradores Activos</h3>
+          <div class="quality-indicator">
+            <span class="quality-dot good"></span>
+            <span>Excelente</span>
+            <span class="quality-dot fair"></span>
+            <span>Aceptable</span>
+            <span class="quality-dot poor"></span>
+            <span>Alta latencia</span>
+          </div>
+        </div>
+        <div id="speakersList" class="speaker-list">
+          <div class="empty-state">
+            <p>Esperando oradores...</p>
+            <small>Cuando alguien comience a transmitir, aparecerá aquí</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="volume-control">
+        <label>
+          Volumen maestro
+          <input type="range" id="volumeSlider" min="0" max="100" value="80" />
+          <span id="volumeValue">80%</span>
+        </label>
+      </div>
+
+      <div class="control-panel">
+        <button class="btn btn-primary" id="listenBtn">
+          Conectar al Auditorio
+        </button>
+        <button class="btn btn-danger" id="leaveBtn">Salir</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="latency-indicator" id="latencyIndicator" style="display: none">
+    0ms
+  </div>
+
+  <script src="/js/libs/mediasoup-client.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/common/socket-client.js"></script>
+  <script src="/js/common/ui-helpers.js"></script>
+  <script src="/js/listener/audio-player.js"></script>
+  <script src="/js/listener/consumer-service.js"></script>
+  <script src="/js/listener/latency-measurer.js"></script>
+  <script src="/js/listener/listener-app.js"></script>
+  <script src="/js/pwa-init.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+{
+  "name": "wmm-mediasoup-server",
+  "version": "2.0.0",
+  "description": "Servidor de audioconferencia con mediasoup y WMM",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "debug": "DEBUG=mediasoup:* node src/index.js",
+    "test": "jest",
+    "lint": "eslint src/",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "monitor": "node scripts/monitor.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mediasoup": "^3.12.5",
+    "socket.io": "^4.6.1",
+    "dotenv": "^16.0.3",
+    "winston": "^3.8.2",
+    "compression": "^1.7.4",
+    "helmet": "^7.0.0",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22",
+    "jest": "^29.5.0",
+    "eslint": "^8.40.0",
+    "supertest": "^6.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "author": "Pablo Cardozo",
+  "license": "MIT"
+}

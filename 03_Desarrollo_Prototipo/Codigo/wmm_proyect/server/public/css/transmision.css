@@ -1,0 +1,102 @@
+.control-panel {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.mic-visualizer {
+  width: 100%;
+  height: 120px;
+  background: var(--gray-200);
+  border-radius: var(--radius-lg);
+  margin: 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--gray-300);
+}
+
+.mic-visualizer.active {
+  background: var(--white);
+  border-color: var(--primary);
+}
+
+.waveform {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 100%;
+}
+
+.waveform-bar {
+  width: 6px;
+  height: 30px;
+  background: var(--primary);
+  border-radius: 3px;
+  transition: height 0.1s ease;
+}
+
+.mic-status {
+  text-align: center;
+  margin: 1rem 0;
+  font-size: 1rem;
+  color: var(--gray-700);
+  font-weight: 500;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.stat-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  text-align: center;
+}
+
+.stat-card .stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.stat-card .stat-label {
+  font-size: 0.875rem;
+  color: var(--gray-600);
+  margin-top: 0.25rem;
+  font-weight: 500;
+}
+
+.hidden {
+  display: none;
+}
+
+.logout-btn {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: var(--gray-200);
+  border: 1px solid var(--gray-300);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: var(--gray-700);
+  font-weight: 500;
+  z-index: 1000;
+  transition: var(--transition);
+}
+
+.logout-btn:hover {
+  background: var(--gray-300);
+  color: var(--dark);
+}

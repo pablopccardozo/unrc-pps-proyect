@@ -1,0 +1,107 @@
+.server-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.5rem;
+}
+.server-info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    min-width: 140px;
+}
+.server-info-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--gray-500);
+    font-weight: 600;
+}
+.server-info-value {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--gray-800);
+    font-family: 'Courier New', monospace;
+}
+
+.monitor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.metric-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    text-align: left;
+}
+.metric-card h4 {
+    font-size: 0.875rem;
+    color: var(--gray-600);
+    margin-bottom: 0.5rem;
+}
+.metric-value {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1.2;
+}
+.metric-unit {
+    font-size: 0.875rem;
+    color: var(--gray-500);
+}
+.speaker-card {
+    background: var(--white);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--gray-200);
+    border-left: 6px solid var(--primary);
+}
+.speaker-card h4 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.listener-item {
+    background: var(--gray-50);
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border-radius: var(--radius-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.alert-badge {
+    background: var(--danger);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    animation: pulse 1s infinite;
+}
+.refresh-btn {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: var(--shadow-lg);
+    font-size: 1.25rem;
+    transition: var(--transition);
+}
+.refresh-btn:hover {
+    transform: rotate(180deg);
+}
