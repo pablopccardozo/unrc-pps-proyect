@@ -1,5 +1,6 @@
 # Editor config
 .obsidian/
+.atl/
 
 # Dependencias
 node_modules/

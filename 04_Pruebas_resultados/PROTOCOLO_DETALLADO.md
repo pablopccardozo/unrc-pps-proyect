@@ -41,7 +41,9 @@
                          │   ACCESS POINT WiFi   │
                          │  (WMM habilitado)     │
                          │  Canal: [elegir]      │
-                         │  Banda: 2.4GHz/5GHz   │
+                          │  Banda: 2.4GHz o 5GHz │
+                          │  (elegir UNA y usar   │
+                          │  en TODOS los escens.)│
                          └──────────┬───────────┘
                                     │
                     ┌───────────────┼───────────────┐
@@ -52,6 +54,12 @@
              │ WiFi        │  │ WiFi    │   │ WiFi        │
              └─────────────┘  └─────────┘   └─────────────┘
 ```
+
+> **⚠️ Selección de banda WiFi:** Antes de comenzar la batería de pruebas, elegir UNA banda (2.4 GHz o 5 GHz) y mantenerla en TODOS los escenarios.  
+> - **2.4 GHz:** Mayor alcance, más interferencia, canales limitados (1, 6, 11). WMM tiene mayor impacto aquí porque hay más contención.  
+> - **5 GHz:** Mayor ancho de banda, menos interferencia, más canales disponibles.  
+>
+> Si se desea evaluar el impacto de la banda en los resultados, repetir la batería completa de escenarios para cada banda por separado y documentar los resultados como series independientes.
 
 ### Flujo de Tráfico
 
@@ -194,6 +202,7 @@ cuando la red WiFi **no tiene tráfico competidor** y WMM está activo.
 
 - **Carga WiFi:** 0% adicional (solo el audio de la prueba)
 - **WMM:** ✅ Activo (`wmm-qos-setup.sh` aplicado)
+- **Banda WiFi:** La seleccionada al inicio del protocolo (2.4 GHz o 5 GHz)
 - **Oradores:** 1
 - **Oyentes:** 2-3
 - **Duración:** 2 minutos por repetición
@@ -431,6 +440,7 @@ de streams en Web Audio API introduce delay adicional.
 
 - **Carga WiFi:** 0% adicional
 - **WMM:** ✅ Activo
+- **Banda WiFi:** La seleccionada al inicio del protocolo (2.4 GHz o 5 GHz)
 - **Oradores:** 2-3 (cada uno con Chrome)
 - **Oyentes:** 3-5
 - **Duración:** 3-5 minutos
@@ -559,6 +569,7 @@ deben tener prioridad sobre el tráfico bulk (iPerf).
 
 - **Carga WiFi:** 70-90% de utilización del canal (generada con iPerf3)
 - **WMM:** ✅ Activo (`wmm-qos-setup.sh` aplicado)
+- **Banda WiFi:** La seleccionada al inicio del protocolo (2.4 GHz o 5 GHz)
 - **Oradores:** 1
 - **Oyentes:** 2-3
 - **Duración:** 3-5 minutos
@@ -732,6 +743,7 @@ demostrar que la mejora en Escenario 3 se debe a WMM y no a otro factor.
 
 - **Carga WiFi:** 70-90% (misma que Escenario 3)
 - **WMM:** ❌ Desactivado (reglas iptables eliminadas)
+- **Banda WiFi:** La seleccionada al inicio del protocolo (2.4 GHz o 5 GHz) — **IDÉNTICA a Escenario 3**
 - **Oradores:** 1
 - **Oyentes:** 2-3
 - **Duración:** 3-5 minutos
@@ -843,6 +855,7 @@ real de la priorización origen bajo congestión.
 
 - **Carga WiFi:** 70-90% (misma que Escenarios 3 y 4)
 - **WMM:** ✅ Activo (reglas iptables aplicadas)
+- **Banda WiFi:** La seleccionada al inicio del protocolo (2.4 GHz o 5 GHz) — **IDÉNTICA a Escenarios 3 y 4**
 - **Oradores:** 1 por vez (Chrome primero, Firefox después)
 - **Oyentes:** 2 (fijos, usando Chrome para aislar la variable)
 - **Duración:** 2-3 minutos por prueba

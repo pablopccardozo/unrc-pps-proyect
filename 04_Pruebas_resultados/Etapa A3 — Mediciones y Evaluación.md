@@ -1,53 +1,38 @@
 
+# Etapa A3 — Mediciones y Evaluación
 
 ## WMM Audio Relay - Práctica Profesional
 
 **Autor:** Pablo Cardozo  
-**Versión:** 1.0  
-**Fecha de inicio:** Mayo 2026
+**Versión:** 2.0  
+**Fecha:** Julio 2026
 
 ---
 
 ## Estructura de Archivos
 
 ```
-mediciones_a3/
+04_Pruebas_resultados/
 │
-├── README.md                          # Este archivo (guía del proyecto)
-├── PROTOCOLO_MEDICIONES.md            # Protocolo detallado paso a paso
+├── PROTOCOLO_DETALLADO.md              # Protocolo completo paso a paso (fuente principal)
+├── Etapa A3 — Mediciones y Evaluación.md  # Este archivo — resumen ejecutivo
+├── Escenario_1.drawio                  # Diagrama topológico
 │
-├── capturas_wireshark/                # Capturas de red (.pcapng)
-│   ├── escenario_1_baseline/
-│   │   ├── baseline_wmm_on_prueba1.pcapng
-│   │   ├── baseline_wmm_on_prueba2.pcapng
-│   │   └── notas_escenario1.txt
-│   ├── escenario_2_multi_speaker/
-│   ├── escenario_3_red_saturada_wmm/
-│   └── escenario_4_red_saturada_sin_wmm/
+├── Capturas_wireshark/                 # Capturas de red (.pcapng / .txt)
+│   ├── Escenario_1_baseline/           # Baseline — red limpia
+│   ├── Escenario_2_multi_speaker/      # Múltiples oradores simultáneos
+│   ├── Escenario_3_red_saturada_wmm/   # Red saturada CON WMM
+│   ├── Escenario_4_red_saturada_sin_wmm/   # Red saturada SIN WMM
+│   └── Escenario_5_comparacion_navegador/  # DSCP Chrome vs Firefox
 │
-├── datos_mediciones/                  # Planillas y datos numéricos
-│   ├── PLANTILLA_REGISTRO.xlsx        # Plantilla maestra para cada escenario
-│   ├── escenario_1_baseline.xlsx
-│   ├── escenario_2_multi_speaker.xlsx
-│   ├── escenario_3_red_saturada_wmm.xlsx
-│   ├── escenario_4_red_saturada_sin_wmm.xlsx
-│   └── consolidado_todos_escenarios.xlsx
-│
-├── scripts_analisis/                  # Scripts de análisis automatizado
-│   ├── extraer_metricas_wireshark.sh  # Extrae métricas RTP de .pcapng
-│   ├── procesar_stats_api.py          # Consume /api/stats del servidor
-│   └── generar_graficas.py            # Gráficas comparativas
-│
-├── reportes/                          # Informes y visualizaciones
-│   ├── informe_comparativo_qos.md     # Análisis escrito
-│   ├── graficas/                      # Gráficos generados
-│   └── tablas_resumen/
-│
-└── logs_sistema/                      # Logs del servidor y sistema operativo
-    ├── server_logs/                   # Logs de Winston del servidor Node
-    ├── tc_qdisc_dumps/                # Outputs de tc -s qdisc
-    └── iperf3_resultados/             # Reportes JSON de iPerf3
+└── (los datos de mediciones, scripts de análisis, reportes
+     y logs se agregarán aquí a medida que se ejecuten las pruebas)
 ```
+
+> ⚠️ **Nota:** Este directorio es dinámico. A medida que se ejecuten las pruebas se
+> agregarán subcarpetas para `datos_mediciones/`, `scripts_analisis/`, `reportes/`
+> y `logs_sistema/` según sea necesario. El **PROTOCOLO_DETALLADO.md** es la guía
+> principal de ejecución; este archivo es un resumen de navegación rápida.
 
 ---
 
@@ -57,12 +42,14 @@ mediciones_a3/
 
 **Descripción:** Red WiFi sin carga adicional. 1 orador, 2–3 oyentes.  
 **Objetivo:** Valores de referencia con WMM activo en condiciones ideales.  
+**Banda WiFi:** La seleccionada al inicio (2.4 GHz o 5 GHz).  
 **Duración:** 2–3 minutos por prueba (mínimo 3 repeticiones).
 
 ### Escenario 2 — Múltiples Oradores Simultáneos
 
 **Descripción:** 2–3 oradores transmitiendo en paralelo, 3–5 oyentes totales.  
 **Objetivo:** Evaluar escalabilidad del SFU y throughput agregado.  
+**Banda WiFi:** La seleccionada al inicio (2.4 GHz o 5 GHz).  
 **Duración:** 3–5 minutos.
 
 ### Escenario 3 — Red Saturada con WMM
@@ -70,12 +57,14 @@ mediciones_a3/
 **Descripción:** Escenario 1 + tráfico competidor (iPerf3, descargas). WMM activo.  
 **Objetivo:** Medir beneficio de QoS en red congestionada.  
 **Carga WiFi objetivo:** 70–90% de utilización del canal.  
+**Banda WiFi:** La seleccionada al inicio (2.4 GHz o 5 GHz).  
 **Duración:** 3–5 minutos.
 
 ### Escenario 4 — Red Saturada SIN WMM (Grupo de Control)
 
 **Descripción:** Idéntico a Escenario 3, pero con reglas iptables DSCP desactivadas.  
 **Objetivo:** Grupo de control para comparación estadística.  
+**Banda WiFi:** La seleccionada al inicio (2.4 GHz o 5 GHz) — IDÉNTICA a Escenario 3.  
 **Duración:** 3–5 minutos.
 
 ### Escenario 5 — Comparación de Marcado DSCP por Navegador
@@ -87,6 +76,7 @@ comparando oradores en Chrome/Chromium vs Firefox.
 Chrome asigna DSCP EF (0xB8) al audio WebRTC con `priority: 'high'`, Firefox no.
 Esto permite cuantificar el impacto real del marcado DSCP origen en la calidad
 de uplink bajo congestión.
+**Banda WiFi:** La seleccionada al inicio (2.4 GHz o 5 GHz) — IDÉNTICA a Escenarios 3 y 4.
 
 **Procedimiento:**
 
@@ -259,4 +249,4 @@ Dudas o issues con el protocolo: contactar a Pablo Cardozo.
 
 ---
 
-**Última actualización:** Mayo 2026
+**Última actualización:** Julio 2026
