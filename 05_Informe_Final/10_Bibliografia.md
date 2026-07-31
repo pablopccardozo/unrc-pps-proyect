@@ -21,5 +21,3 @@
 [10] **RFC 3550**, *RTP: A Transport Protocol for Real-Time Applications*, IETF, 2003.
 
 ---
-
-> *Nota: esta sección se irá completando a medida que se avance con las demás secciones del informe (Etapa A2, A3, Análisis de Resultados, etc.)*
